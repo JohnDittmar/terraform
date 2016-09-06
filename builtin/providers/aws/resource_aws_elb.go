@@ -242,12 +242,12 @@ func resourceAwsElbCreate(d *schema.ResourceData, meta interface{}) error {
 		return err
 	}
 
-	var elbName string
-	if v, ok := d.GetOk("name"); ok {
-		elbName = v.(string)
+	var elbname string
+	if v, ok := d.getok("name"); ok {
+		elbname = v.(string)
 	} else {
-		elbName = resource.PrefixedUniqueId("tf-lb-")
-		d.Set("name", elbName)
+		elbname = resource.prefixeduniqueid("tf-lb-")
+		d.set("name", elbname)
 	}
 
 	tags := tagsFromMapELB(d.Get("tags").(map[string]interface{}))
